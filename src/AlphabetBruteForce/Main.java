@@ -14,15 +14,23 @@ public class Main {
 		String input = scan.next();
 		String inputHashed = hash.Hashing(input);
 		
-		String word = wordsForce.brute(inputHashed);
+		force.setHashCode(inputHashed);
+		force.start();
 		
-		if(word.equals("NotFound")) {
-			word = force.bruteForceNumberLetters(inputHashed);
-		}else {
-			System.out.println("The word was: " + word);
+		String word = wordsForce.brute(inputHashed);
+		if(word != "NotFound") {
+			if(force.isAlive()) {
+				force.StopThread();
+			}
+			System.out.println("The word is: " + word);
+			System.out.println("Your word was: " + input);
+			System.out.println("Your word Hashed: " + inputHashed);
 		}
 		
-		System.out.println("The word is: " + word);
+		while(force.getWord() == "") {
+			Thread.sleep(100);
+		}
+		System.out.println("The word is: " + force.getWord());
 		System.out.println("Your word was: " + input);
 		System.out.println("Your word Hashed: " + inputHashed);
 	}

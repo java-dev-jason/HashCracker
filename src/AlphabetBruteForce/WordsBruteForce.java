@@ -10,9 +10,6 @@ public class WordsBruteForce {
 	private static File textFile = new File("src/Words.txt");
 	private static Scanner scan;
 	
-	public WordsBruteForce() {
-	}
-	
 	public static String brute(String HashCode) throws Exception {
 		scan = new Scanner(textFile);
 		while(scan.hasNext()) {
